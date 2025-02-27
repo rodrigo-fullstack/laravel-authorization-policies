@@ -11,4 +11,8 @@ class User extends Authenticable
         'password',
         'role',
     ];
+
+    public function posts(){
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
 }
