@@ -1,6 +1,9 @@
-@extends('layouts.main_layout')
-@section('content')
+<x-layouts.app >
 
-<p class="display-6 text-secondary text-center py-5">CONTENT</p>
+    <div>Logged in as {{auth()->user()->role}}</div>
+    <a href="{{ route('logout') }}">Logout</a>
 
-@endsection
+    
+
+
+</x-layouts.app>
