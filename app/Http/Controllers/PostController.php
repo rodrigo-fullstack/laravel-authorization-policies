@@ -41,4 +41,17 @@ class PostController extends Controller
             
         // return view('home', compact('posts'));
     }
+
+    public function create(){
+        // needs to pass the model class to identify its Policy
+        if(Auth()->user()->can('create', Post::class)){
+            echo "I will create a new post";
+            
+        } else{
+            echo "I can't create a new post";
+            
+        }
+            
+        // return view('home', compact('posts'));
+    }
 }

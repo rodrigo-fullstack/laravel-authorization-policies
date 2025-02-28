@@ -22,6 +22,9 @@ Route::middleware('auth')->group(function () {
     )->name('update');
     Route::get('/posts/delete/{id}', [PostController::class, 'delete']   
     )->name('delete');
+
+    Route::get('/posts/create', [PostController::class, 'create']   
+    )->name('create');
 });
 
 Route::middleware('guest')->group(function () {
