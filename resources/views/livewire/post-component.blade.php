@@ -16,6 +16,12 @@
         </a>
     @endcan
 
+    @can('delete', $post)
+        <a class="btn btn-danger" href="#">
+            Delete
+        </a>
+    @endcan
+
     {{-- instance passing is not allowed in livewire --}}
     {{-- @if($postPolicy->update(auth()->user(), $post))
         <a class="btn btn-primary" href="#">
