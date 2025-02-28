@@ -29,7 +29,18 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role === 'visitor' ? false : true;
+
+        // get info from db v1
+        // return $user->permissions()->where('permission', 'create_post')->exists();
+
+        // get info from db v2
+        // return $user->permissions->contains('permission', 'create_post');
+
+        // get info from session (best performance)
+        foreach(auth()->user()->permissions as $permission){
+            if($permission['permission'] === 'create_post') return true;
+        }
+        return false;
     }
 
     /**
