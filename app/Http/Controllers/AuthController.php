@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function login($id){
-        $user = User::find($id);
+        $user = User::with('permissions')->find($id);
         Auth::login($user);
+
+        dd(Auth()->user()->toArray());
+
         return redirect()->route('home');
     }
     
