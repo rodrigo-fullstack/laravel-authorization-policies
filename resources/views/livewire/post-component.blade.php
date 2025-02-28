@@ -11,13 +11,13 @@
 
     
     @can('update', $post)
-        <a class="btn btn-primary" href="#">
+        <a class="btn btn-primary" href="{{ route('update', ['id' => $post->id])}}">
             Update
         </a>
     @endcan
 
     @can('delete', $post)
-        <a class="btn btn-danger" href="#">
+        <a class="btn btn-danger" href="{{ route('delete', ['id' => $post->id])}}">
             Delete
         </a>
     @endcan
