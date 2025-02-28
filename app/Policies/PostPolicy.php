@@ -8,6 +8,14 @@ use Illuminate\Auth\Access\Response;
 
 class PostPolicy
 {
+    public function before(User $user){
+        if($user->permissions->contains('permission', 'all')){
+            return true;
+        }
+
+        return null;
+    }
+
     /**
      * Determine whether the user can view any models.
      */
