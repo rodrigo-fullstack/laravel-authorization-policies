@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,8 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
+        Post::truncate();
+
         $roles = ['admin', 'creator', 'visitor'];
         
         $user_id = 1;
@@ -25,6 +28,7 @@ class PostSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ];
+            $user_id++;
         }
 
         DB::table('posts')->insert($posts);
