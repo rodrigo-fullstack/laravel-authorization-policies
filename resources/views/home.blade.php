@@ -14,8 +14,10 @@
 
                 @foreach ($posts as $post)
                 
-                
+                    @can('view', $post)
                     <livewire:post-component :post="$post" :postPolicy="new PostPolicy()">
+                        
+                    @endcan
                         
 
 
