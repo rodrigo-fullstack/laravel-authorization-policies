@@ -27,7 +27,7 @@ class PostPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user)
     {
 
         // get info from db v1
@@ -38,9 +38,10 @@ class PostPolicy
 
         // get info from session (best performance)
         foreach(auth()->user()->permissions as $permission){
-            if($permission['permission'] === 'create_post') return true;
+            if($permission['permission'] === 'create_post') 
+                return Response::allow();
         }
-        return false;
+        return Response::denyWithStatus(403, 'Not Authorized', 403);
     }
 
     /**
