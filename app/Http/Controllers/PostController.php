@@ -18,7 +18,9 @@ class PostController extends Controller
     
     public function update($id){
         $post = Post::find($id);
-        
+     
+        // Verificar Policy com AuthUser
+        // Verify Policy with AuthUser
         if(Auth()->user()->can('update', $post)){
             echo "I will update the post id: $id";
             
@@ -26,7 +28,6 @@ class PostController extends Controller
             echo "I can't update the post id: $id";
             
         }
-        // return view('home', compact('posts'));
     }
 
     public function delete($id){
@@ -53,6 +54,8 @@ class PostController extends Controller
             
         // }
 
+        // Verificar Policy por Gate
+        // Verify Policy by Gate
         $response = Gate::inspect('create', Post::class);
 
         if($response->authorize()){
